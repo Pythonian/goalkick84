@@ -1,15 +1,6 @@
-import os
+from pathlib import Path
 
-SETTINGS_DIR = os.path.dirname(__file__)
-
-PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
-PROJECT_PATH = os.path.abspath(PROJECT_PATH)
-
-TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
-ASSETS_PATH = os.path.join(PROJECT_PATH, 'assets')
-STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
-MEDIA_PATH = os.path.join(PROJECT_PATH, 'media')
-DATABASE_PATH = os.path.join(PROJECT_PATH, 'post.db')
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-$hz+ko8rmqc%%jhnuw#(&=rvhye+80sr!hu4!#*g)tczy$q#7'
@@ -17,10 +8,11 @@ SECRET_KEY = '-$hz+ko8rmqc%%jhnuw#(&=rvhye+80sr!hu4!#*g)tczy$q#7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '127.0.0.1:8000', 'www.goalkick84.com', 'goalkick84.com', 'goalkick84.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.goalkick84.com',
+                 'goalkick84.com', 'goalkick84.pythonanywhere.com']
 
 ADMINS = (
-     ('seyi', 'prontomaster@gmail.com'),
+    ('seyi', 'prontomaster@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -46,7 +38,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -56,7 +47,7 @@ ROOT_URLCONF = 'website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_PATH],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +69,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATABASE_PATH,
+        'NAME': BASE_DIR / 'post.db',
     }
 }
 
@@ -117,16 +108,18 @@ USE_TZ = True
 
 SITE_ID = 1
 
-MEDIA_ROOT = MEDIA_PATH
+MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = STATIC_PATH
+STATIC_ROOT = BASE_DIR / 'static'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    ASSETS_PATH,
-)
+STATICFILES_DIRS = [
+    BASE_DIR / 'assets',
+]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

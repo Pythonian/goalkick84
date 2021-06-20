@@ -1,9 +1,14 @@
 from django import template
 
-register = template.Library()
-
 from ..models import Article
 
-@register.assignment_tag
+register = template.Library()
+
+
+@register.inclusion_tag('post/latest_posts.html')
 def get_latest_articles():
-    return Article.objects.all()[:3]
+    return {'latest_articles': Article.objects.all()[:3]}
+
+
+def latest_articles():
+    return {'latest_articles': Article.objects.all()[:3]}

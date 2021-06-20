@@ -1,13 +1,9 @@
-from __future__ import unicode_literals
-import datetime
 from django.db import models
-from django.core.urlresolvers import reverse
-from django.utils.encoding import python_2_unicode_compatible
+from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 
 
-@python_2_unicode_compatible
 class Category(models.Model):
     title = models.CharField(
         max_length=50)
@@ -27,7 +23,6 @@ class Category(models.Model):
             args=[self.slug])
 
 
-@python_2_unicode_compatible
 class Tag(models.Model):
     title = models.CharField(
         max_length=50)
@@ -44,7 +39,6 @@ class Tag(models.Model):
             args=[self.slug])
 
 
-@python_2_unicode_compatible
 class Article(models.Model):
     title = models.CharField(
         max_length=100,
@@ -62,6 +56,7 @@ class Article(models.Model):
     body = RichTextField()
     category = models.ForeignKey(
         Category,
+        on_delete=models.CASCADE,
         blank=True,
         null=True)
     tags = models.ManyToManyField(
@@ -75,7 +70,7 @@ class Article(models.Model):
         max_length=50,
         blank=True,
         null=True)
-    is_published =  models.BooleanField(
+    is_published = models.BooleanField(
         default=True,
         help_text="Uncheck this if you don't want the article to appear on the site yet.")
     featured = models.BooleanField(
@@ -112,4 +107,4 @@ class Article(models.Model):
             self.slug = slugify(self.title)
         self.guest_author = ""
 
-        super(Article, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)

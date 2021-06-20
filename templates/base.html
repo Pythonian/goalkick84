@@ -156,8 +156,8 @@
                     <div class=" bkwrapper container">
 						<div class="bk-ticker-inner">
 							<ul id="ticker-57fc8124cfcc0" class="bk-ticker-wrapper">
-							{% get_latest_articles as articles %}
-							{% for article in articles %}
+							{# get_latest_articles as articles #}
+							{% for article in latest_articles %}
                                 <li class="news-item">
                                     <div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
                                         <h4 itemprop="name" class="title"><a itemprop="url" href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>

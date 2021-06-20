@@ -1,45 +1,47 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
+app_name = 'post'
+
 urlpatterns = [
-    url(r'^$',
-        views.home,
-        name="home"),
+    path('',
+         views.home,
+         name="home"),
 
-    url(r'^news/$',
-        views.articles,
-        name="articles"),
+    path('news/',
+         views.articles,
+         name="articles"),
 
-    url(r'^about/$',
-        views.about,
-        name="about"),
+    path('about/',
+         views.about,
+         name="about"),
 
-    url(r'^privacy/$',
-        views.privacy,
-        name="privacy"),
+    path('privacy/',
+         views.privacy,
+         name="privacy"),
 
-    url(r'^news/(?P<article_slug>[-\w]+)/$',
-        views.article_detail,
-        name="article_detail"),
+    path('news/<slug:article_slug>/',
+         views.article_detail,
+         name="article_detail"),
 
-    url(r'^news/(?P<article_slug>[-\w]+)/edit/$',
-        views.edit,
-        name="edit"),
+    path('news/<slug:article_slug>/edit/',
+         views.edit,
+         name="edit"),
 
-    url(r'^category/(?P<category_slug>[-\w]+)/$',
-        views.category,
-        name="category"),
+    path('category/<slug:category_slug>/',
+         views.category,
+         name="category"),
 
-    url(r'^tag/(?P<tag_slug>[-\w]+)/$',
-        views.tag_detail,
-        name="tag_detail"),
+    path('tag/<slug:tag_slug>/',
+         views.tag_detail,
+         name="tag_detail"),
 
-    url(r'^search/$',
-        views.search,
-        name='search'),
+    path('search/',
+         views.search,
+         name='search'),
 
-    url(r'^new-post/$',
-        views.new,
-        name='new'),
+    path('new-post/',
+         views.new,
+         name='new'),
 
 ]

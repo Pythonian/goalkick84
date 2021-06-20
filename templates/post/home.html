@@ -9,52 +9,62 @@
 
 {% block content %}
 
-			<div id="body-wrapper" class="wp-page">
-				<div class="bkwrapper container">
-					<div class="row bksection">
-						<div class="bk-category-content bkpage-content col-md-8 has-sb">
-							<div class="row">
-								<div id="main-content" class="clear-fix" role="main">
-									<div class="content-wrap bk-masonry">
-										<ul class="bk-masonry-content clearfix">
-										{% for article in article_list %}
-											<li class="col-md-6 col-sm-6 item">
-                                                <div class="row-type content_out hasPostThumbnail">
-                                                    <div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
-														<div class="row-type-inner">
-															<div class="bk-mask">
-																<div class="thumb hide-thumb">
-																	<a href="{{ article.get_absolute_url }}"><img width="400" height="267" src="{{ article.image.url }}" class="attachment-bk-auto-size size-bk-auto-size wp-post-image" alt="" /></a>
-																</div> <!-- close thumb -->
-															</div>
-															{% if article.category %}<div class="post-category"><a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></div>{% endif %}
-															<div class="post-c-wrap sink">
-																<h4 itemprop="name" class="title">
-																	<a itemprop="url" href="{{ article.get_absolute_url }}">{{article.title}}</a>
-																</h4>
-																<div class="meta">
-																	<div class="post-author"><i class="fa fa-clock-o"></i> Gbenga Adeleye</div>
-																	<div class="post-date"><i class="fa fa-clock-o"></i>{{article.publish|date:"F j, Y"}}</div>
-																</div>
-																<div class="excerpt">{{article.excerpt|truncatechars:"140"|safe}}</div>
-																<div class="readmore"><a href="{{ article.get_absolute_url }}">Read More</a></div>
-															</div>
-														</div>
-													</div>
+<div id="body-wrapper" class="wp-page">
+    <div class="bkwrapper container">
+        <div class="row bksection">
+            <div class="bk-category-content bkpage-content col-md-8 has-sb">
+                <div class="row">
+                    <div id="main-content" class="clear-fix" role="main">
+                        <div class="content-wrap bk-masonry">
+                            <ul class="bk-masonry-content clearfix">
+                                {% for article in article_list %}
+                                <li class="col-md-6 col-sm-6 item">
+                                    <div class="row-type content_out hasPostThumbnail">
+                                        <div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
+                                            <div class="row-type-inner">
+                                                <div class="bk-mask">
+                                                    <div class="thumb hide-thumb">
+                                                        <a href="{{ article.get_absolute_url }}"><img width="400"
+                                                                height="267" src="{{ article.image.url }}"
+                                                                class="attachment-bk-auto-size size-bk-auto-size wp-post-image"
+                                                                alt="" /></a>
+                                                    </div> <!-- close thumb -->
                                                 </div>
-                                            </li>
-                                        {% endfor %}
-										</ul>
-									</div>
+                                                {% if article.category %}<div class="post-category"><a
+                                                        href="{{ article.category.get_absolute_url }}">{{ article.category }}</a>
+                                                </div>{% endif %}
+                                                <div class="post-c-wrap sink">
+                                                    <h4 itemprop="name" class="title">
+                                                        <a itemprop="url"
+                                                            href="{{ article.get_absolute_url }}">{{article.title}}</a>
+                                                    </h4>
+                                                    <div class="meta">
+                                                        <div class="post-author"><i class="fa fa-clock-o"></i> Gbenga
+                                                            Adeleye</div>
+                                                        <div class="post-date"><i
+                                                                class="fa fa-clock-o"></i>{{article.publish|date:"F j, Y"}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="excerpt">{{article.excerpt|truncatechars:"140"|safe}}
+                                                    </div>
+                                                    <div class="readmore"><a href="{{ article.get_absolute_url }}">Read
+                                                            More</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
 
-									{% include 'post/pagination.html' %}
-								</div> <!-- end #main -->
-							</div>
-						</div> <!-- end #bk-content -->
+                        {% include 'post/pagination.html' %}
+                    </div> <!-- end #main -->
+                </div>
+            </div> <!-- end #bk-content -->
 
-						{% include 'post/sidebar.html' %}
-					</div>
-				</div>
-			</div>
-
+            {% include 'post/sidebar.html' %}
+        </div>
+    </div>
+</div>
 {% endblock %}
