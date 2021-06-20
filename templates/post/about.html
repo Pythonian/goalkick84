@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load post_tags %}
+{% block title %}About Us{% endblock %}
+{% block metas %}
+<meta property="og:title" content="About Us" />
+<meta property="og:url" content="http://www.goalkick84.com/about/" />
+{% endblock %}
+
+{% block content %}
+
+<div class="single-page sidebar-right">
+    <div class="article-wrap bkwrapper container" itemscope itemtype="http://schema.org/Article">
+       <div class="article-content-wrap">
+            <div class="row bksection bk-in-single-page clearfix">
+                <div class="main col-md-8">
+					<div class="singletop">
+	                    <div class="bk-breadcrumbs-wrap">
+	                    	<div class="breadcrumbs">
+	                    		<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	                    			<a itemprop="url" href="{% url 'post:home' %}"><span itemprop="title">Home</span></a>
+	                    		</span>
+	                    		<span class="delim">&rsaquo;</span>
+	                    		<span class="current">About Us</span>
+	                    	</div>
+	                    </div>
+	        		</div> <!-- end singletop --><br/>
+
+			        <div class="article-content  clearfix" itemprop="articleBody">
+                     	<p>We at <a href="">Goalkick84</a> are dedicated to bringing you football news from the leagues, teams and players in and around Nigeria.</p>
+					  <p>The information contained in <a href="">Goalkick84</a> may not be published, broadcast, re-written or redistributed without the prior written authority of <a href="">Goalkick84</a>.</p>
+					</div><!-- end article content -->
+
+
+                    <div class="widget recommend-box">
+                    	<a class="close" href="javascript:void(0)" title="Close"><i class="fa fa-times"></i></a>
+                    	<h3>You might be interested</h3>
+                    	<div class="entries">
+                    		<ul class="list-small-post">
+                    		{% get_latest_articles as articles %}
+							{% for article in articles %}
+                    			<li class="small-post content_out clearfix">
+                    				<div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
+            							<div class="thumb hide-thumb">
+            								<a href=""><img width="130" height="130" src="{{ article.image.url }}" class="attachment-bk130_130 size-bk130_130 wp-post-image" alt="{{ article.title }}"/></a>
+            							</div>
+            							{% if article.category %}<div class="post-category"><a href="{{ article.caategory.get_absolute_url }}">{{ article.category }}</a></div>{% endif %}
+							            <div class="post-c-wrap">
+							                <h4 itemprop="name" class="title"><a itemprop="url" href="">{{ article.title }}</a></h4>
+							            </div>
+							        </div>
+						        </li>
+						    {% endfor %}
+						    </ul>
+						</div>
+					</div><!--recommend-box -->
+
+				</div> <!-- end #bk-content -->
+
+				{% include 'post/sidebar.html' %}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

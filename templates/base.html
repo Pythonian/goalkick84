@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+{% load static %}
+{% load post_tags %}
+<html lang="en-US" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="google-site-verification" content="rjSt77pzpOww6_daTudzXBmb-TkzqoB7N6uY0jjQYng" />
+	<title>{% block title %}{% endblock %} | Goalkick84</title>
+	{% block metas %}{% endblock %}
+	<meta property="og:site_name" content="Goalkick84"/>
+	<meta name="author" content="Adeleye Gbenga">
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@Papejay" />
+	<meta property="og:type" content="article" />
+	<meta property="article:publisher" content="https://www.facebook.com/Goalkick84-445646158975464/" />
+
+	<link rel='stylesheet' href='http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' type='text/css' media='all'/>
+	<link rel='stylesheet' href="{% static 'post/css/theme_plugins.css' %}" type='text/css' media='all'/>
+	<link rel='stylesheet' href="{% static 'post/css/style.css' %}" type='text/css' media='all'/>
+	<link rel='stylesheet' href="{% static 'post/css/responsive.css' %}" type='text/css' media='all'/>
+	<link rel='stylesheet' href="{% static 'post/css/google-fonts.css' %}" type='text/css' media='all'/>
+	<link rel="stylesheet" href="{% static 'post/css/page.css' %}" type="text/css" media="all"/>
+
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js'></script>
+	<script type='text/javascript' src='http://code.jquery.com/ui/1.11.4/jquery-ui.js'></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9184445364845005",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+
+<body class="archive category category-movies category-79" itemscope itemtype="http://schema.org/WebPage">
+
+	<div id="page-wrap" class='wide'>
+		<div id="main-mobile-menu">
+			<div class="block">
+				<div id="mobile-inner-header">
+					<h3 class="menu-title">Goalkick84</h3>
+					<a class="mobile-menu-close" href="javascript:void(0)" title="Close"><i class="fa fa-long-arrow-left"></i></a>
+				</div>
+				{% if request.user.is_staff or request.user.is_superuser %}
+				<div class="top-menu">
+					<h3 class="menu-location-title">Top Menu</h3>
+					<div id="mobile-top-menu" class="menu-top-menu-container">
+						<ul id="menu-top-menu" class="menu">
+							<li class="menu-item"><a href="{% url 'post:new' %}">New Post</a></li>
+						</ul>
+					</div>
+				</div>
+				{% endif %}
+				<div class="main-menu">
+					<h3 class="menu-location-title">Main Menu</h3>
+					<div id="mobile-menu" class="menu-main-menu-container">
+						<ul id="menu-main-menu" class="menu">
+							<li class="menu-item"><a href="{% url 'post:home' %}">Home</a></li>
+							<li class="menu-item"><a href="/category/super-eagles/">Super Eagles</a></li>
+							<li class="menu-item"><a href="/category/npfl/">NPFL</a></li>
+							<li class="menu-item"><a href="/category/interviews/">Interviews</a></li>
+							<li class="menu-item"><a href="/category/player-profile/">Player Profiles</a></li>
+							<li class="menu-item"><a href="/category/transfer-news/">Transfers</a></li>
+							<li class="menu-item"><a href="/category/nnl/">NNL</a></li>
+							<li class="menu-item"><a href="/category/nwfl/">NWFL</a></li>
+							<li class="menu-item"><a href="{% url 'post:about' %}">About Us</a></li>
+							<li class="menu-item"><a href="{% url 'post:privacy' %}">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div id="page-inner-wrap">
+            <div class="page-cover mobile-menu-close"></div>
+            <div class="bk-page-header">
+                <div class="header-wrap header-1" style="background: DarkBlue;">
+                    <div class="top-bar" style="display: ;">
+                        <div class="bkwrapper container">
+                            <div class="top-nav clearfix">
+                                <div id="top-menu" class="menu-top-menu-container">
+									<ul id="menu-top-menu-1" class="menu">
+										{% if request.user.is_staff or request.user.is_superuser %}<li class="menu-item"><a href="{% url 'post:new' %}">New Post</a></li>{% endif %}
+									</ul>
+								</div>
+								<div class="header-social">
+									<ul class="clearfix">
+										<li class="social-icon fb"><a class="bk-tipper-bottom" data-title="Facebook" href="https://www.facebook.com/Goalkick84-445646158975464/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li class="social-icon twitter"><a class="bk-tipper-bottom" data-title="Twitter" href="https://twitter.com/Papejay" target="_blank"><i class="fa fa-twitter"></i></a></li>
+									</ul>
+                    			</div>
+                            </div><!--top-nav-->
+                        </div>
+                    </div><!--top-bar-->
+
+                    <div class="header container">
+                        <div class="row">
+                            <div class="col-md-12">
+                    			<div class="header-inner">
+     			                   <!-- logo open -->
+                                    <div class="logo">
+                                        <h1><a href="/"><img src="{% static 'post/img/logo.jpg' %}" alt="logo" width="228" height="90" /></a></h1>
+                            		</div><!-- logo close -->
+                                    <!-- header-banner open -->
+                                	<div class="header-banner">
+                                        <a class="ads-banner-link" target="_blank"><img class="ads-banner" src="{% static 'post/img/728x90.jpg' %}" alt=""/></a>
+                                    </div>
+                                	<!-- header-banner close -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- nav open -->
+            		<nav class="main-nav">
+                        <div class="main-nav-inner bkwrapper container">
+                            <div class="main-nav-container clearfix">
+								<div class="main-nav-wrap">
+									<div class="mobile-menu-wrap">
+										<h3 class="menu-title">Goalkick84</h3>
+										<a class="mobile-nav-btn" id="nav-open-btn"><i class="fa fa-bars"></i></a>
+									</div>
+									<div id="main-menu" class="menu-main-menu-container">
+										<ul id="menu-main-menu-1" class="menu">
+											<li class="menu-item"><a href="{% url 'post:home' %}">Home</a></li>
+											<li class="menu-item"><a href="/category/super-eagles/">Super Eagles</a></li>
+											<li class="menu-item"><a href="/category/npfl/">NPFL</a></li>
+											<li class="menu-item"><a href="/category/interviews/">Interviews</a></li>
+											<li class="menu-item"><a href="/category/player-profile/">Player Profiles</a></li>
+											<li class="menu-item"><a href="/category/transfer-news/">Transfers</a></li>
+											<li class="menu-item"><a href="/category/nnl/">NNL</a></li>
+											<li class="menu-item"><a href="/category/nwfl/">NWFL</a></li>
+											<li class="menu-item"><a href="{% url 'post:about' %}">About Us</a></li>
+										</ul>
+									</div>
+								</div>
+                                <!-- <div class="ajax-search-wrap">
+									<div id="ajax-form-search" class="ajax-search-icon"><i class="fa fa-search"></i></div>
+									<form class="ajax-form" method="get" action="">
+										<fieldset>
+											<input id="search-form-text" type="text" autocomplete="off" class="field" name="s" value="" placeholder="Search this Site...">
+										</fieldset>
+									</form>
+								</div> -->
+                            </div>
+                        </div><!-- main-nav-inner -->
+            		</nav>
+                    <!-- nav close -->
+        		</div> <!-- header-wrap header-1 -->
+                <!-- ticker open -->
+                <div class="bk-ticker-module">
+                    <div class=" bkwrapper container">
+						<div class="bk-ticker-inner">
+							<ul id="ticker-57fc8124cfcc0" class="bk-ticker-wrapper">
+							{% get_latest_articles as articles %}
+							{% for article in articles %}
+                                <li class="news-item">
+                                    <div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
+                                        <h4 itemprop="name" class="title"><a itemprop="url" href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
+                                    </div>
+                                </li>
+                            {% endfor %}
+							</ul>
+						</div>
+					</div>
+                </div>
+                <!-- ticker close -->
+			</div>
+
+            <!-- backtop open -->
+    		<div id="back-top"><i class="fa fa-long-arrow-up"></i></div>
+            <!-- backtop close -->
+
+			{% block content %}
+			{% endblock %}
+
+            <div class="footer">
+                <div class="footer-content bkwrapper clearfix container">
+                    <div class="row">
+                        <div class="footer-sidebar col-md-4">
+                            <aside id="text-2" class="widget widget_text">
+								<div class="bk-header">
+									<div class="widget-title"><h3>Disclaimer</h3></div>
+								</div>
+								<div class="textwidget">
+									<p>The information contained in Goalkick84 may not be published, broadcast, re-written or redistributed without the prior written authority of Goalkick84.</p>
+								</div>
+							</aside>
+						</div>
+						<div class="footer-sidebar col-md-4">
+							<aside id="text-4" class="widget widget_text">
+								<div class="bk-header">
+									<div class="widget-title"><h3>Contact Us</h3></div>
+								</div>
+								<div class="textwidget">
+									<ul style="text-align: left;">
+										<li style="margin-bottom: 7px;"><i class="fa fa-map-marker"></i> 12 Benghazi Street, Wuse Zone 4, Abuja.</li>
+										<li style="margin-bottom: 7px;"><i class="fa fa-phone"></i> 07061902505</li>
+										<li style="margin-bottom: 7px;"><i class="fa fa-phone"></i> 08184522150</li>
+										<li><i class="fa fa-envelope-o"></i> <a href="mailto:gbengaadeleye60@gmail.com"> gbengaadeleye60@gmail.com</a></li>
+									</ul>
+								</div>
+							</aside>
+						</div>
+                        <div class="footer-sidebar col-md-4">
+							<aside id="bk_social_widget-2" class="widget widget-social">
+								<div class="widget-title-wrap">
+									<div class="bk-header">
+										<div class="widget-title"><h3>Follow us</h3></div>
+									</div>
+								</div>
+								<div class="social-wrapper">
+									<ul class="clearfix">
+										<li class="social-icon fb"><a class="bk-tipper-bottom" data-title="Facebook" href="https://www.facebook.com/Goalkick84-445646158975464/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+
+										<li class="social-icon twitter"><a class="bk-tipper-bottom" data-title="Twitter" href="https://twitter.com/Papejay" target="_blank"><i class="fa fa-twitter"></i></a></li>
+									</ul>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+				<div class="footer-lower">
+                    <div class="container">
+                        <div class="footer-inner clearfix">
+                            <div id="footer-menu" class="menu-footer-menu-container">
+								<ul id="menu-footer-menu" class="menu">
+									<li class="menu-item"><a href="{% url 'post:home' %}">Home</a></li>
+									<li class="menu-item"><a href="{% url 'post:about' %}">About Us</a></li>
+									<li class="menu-item"><a href="{% url 'post:privacy' %}">Privacy Policy</a></li>
+								</ul>
+							</div>
+                            <div class="bk-copyright">&copy;2016 &bull; All rights reserved | Developed by <a href="https://twitter.com/Ajibel">Seyi Pythonian</a></div>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+        </div> <!-- Close Page inner Wrap -->
+	</div> <!-- Close Page Wrap -->
+
+    <script type='text/javascript'>function si_captcha_refresh(img_id,form_id,securimage_url,securimage_show_url){var chars="0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";var string_length=16;var prefix='';for(var i=0;i<string_length;i++){var rnum=Math.floor(Math.random()*chars.length);prefix+=chars.substring(rnum,rnum+1);}document.getElementById('si_code_'+form_id).value=prefix;var si_image_ctf=securimage_show_url+prefix;if(img_id=='si_image_side_login'){document.getElementById('si_image_side_login').src=si_image_ctf;}else{document.getElementById('si_image_'+form_id).src=si_image_ctf;}}</script>
+<script type="text/javascript">var si_captcha_styles="\
+<!-- begin SI CAPTCHA Anti-Spam - comment form style -->\
+<style type='text/css'>\
+div#captchaImgDiv { display:block; }\
+.captchaSizeDivSmall { width:175px; height:45px; padding-top:10px; }\
+.captchaSizeDivLarge { width:250px; height:60px; padding-top:10px; }\
+img#si_image_com,#si_image_reg,#si_image_log,#si_image_side_login { border-style:none; margin:0; padding-right:5px; float:left; }\
+.captchaImgRefresh { border-style:none; margin:0; vertical-align:bottom; }\
+div#captchaInputDiv { display:block; padding-top:15px; padding-bottom:5px; }\
+label#captcha_code_label { margin:0; }\
+input#captcha_code { width:65px; }\
+</style>\
+<!-- end SI CAPTCHA Anti-Spam - comment form style -->\
+";jQuery(document).ready(function($){$('head').append(si_captcha_styles);});</script>
+<script src="http://gloria.bk-ninja.com/wp-content/plugins/bbpress,_templates,_default,_js,_editor.js,qver==2.5.9-6017+contact-form-7,_includes,_js,_jquery.form.min.js,qver==3.51.0-2014.06.20.pagespeed.jc.Lq6-1IOWLI.js"></script><script>eval(mod_pagespeed_w$7hr1Ncxg);</script>
+<script>eval(mod_pagespeed_uy6jQZrq87);</script>
+<script type='text/javascript'>var _wpcf7={"loaderUrl":"http:\/\/gloria.bk-ninja.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","recaptchaEmpty":"Please verify that you are not a robot.","sending":"Sending ...","cached":"1"};</script>
+<script type='text/javascript' src='http://gloria.bk-ninja.com/wp-content/plugins/contact-form-7/includes/js/scripts.js,qver=4.4.2.pagespeed.jm.v0KqVg2T-a.js'></script>
+<script type='text/javascript'>var wc_add_to_cart_params={"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/category\/movies\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View Cart","cart_url":"http:\/\/gloria.bk-ninja.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};</script>
+<script src="//gloria.bk-ninja.com/wp-content/plugins/woocommerce/assets/js/frontend,_add-to-cart.min.js,qver==2.5.5+jquery-blockui,_jquery.blockUI.min.js,qver==2.70.pagespeed.jc.8llIiV4gjK.js"></script><script>eval(mod_pagespeed_SuYVq8A0Qp);</script>
+<script>eval(mod_pagespeed_756YF$RV0B);</script>
+<script type='text/javascript'>var woocommerce_params={"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/category\/movies\/?wc-ajax=%%endpoint%%"};</script>
+<script src="//gloria.bk-ninja.com/wp-content/plugins/woocommerce/assets/js/frontend,_woocommerce.min.js,qver==2.5.5+jquery-cookie,_jquery.cookie.min.js,qver==1.4.1.pagespeed.jc.X2ngeLr_1B.js"></script><script>eval(mod_pagespeed_cBZV8neq9h);</script>
+<script>eval(mod_pagespeed_HYKxNOCa5H);</script>
+<script type='text/javascript'>var wc_cart_fragments_params={"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/category\/movies\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments"};</script>
+<script src="//gloria.bk-ninja.com/wp-content,_plugins,_woocommerce,_assets,_js,_frontend,_cart-fragments.min.js,qver==2.5.5+wp-includes,_js,_jquery,_ui,_widget.min.js,qver==1.11.4+wp-includes,_js,_jquery,_ui,_core.min.js,qver==1.11.4+wp-includes,_js,_jquery,_ui,_tabs.min.js,qver==1.11.4+wp-includes,_js,_jquery,_ui,_accordion.min.js,qver==1.11.4.pagespeed.jc.Ql1szAgpfV.js"></script><script>eval(mod_pagespeed_6rT45MA7B3);</script>
+<script>eval(mod_pagespeed_kTL1ZJM98_);</script>
+<script>eval(mod_pagespeed_Dk2M868_qS);</script>
+<script>eval(mod_pagespeed_nub13NtUVO);</script>
+<script>eval(mod_pagespeed_jvWpbI1d8x);</script>
+<script type='text/javascript'>var bkSmoothScroll={"status":"0"};</script>
+<script type='text/javascript' src='http://gloria.bk-ninja.com/wp-content/themes/gloria/js/theme_plugins.js,qver=4.5.4.pagespeed.jm.Xb_6W1M0QT.js'></script>
+<script type='text/javascript' src='http://gloria.bk-ninja.com/wp-content/themes/gloria/js/onviewport.js,qver=4.5.4.pagespeed.jm.R1e1V6twwd.js'></script>
+<script type='text/javascript'>var ajax_btn_str={"loadmore":"Load More","nomore":"No More Posts"};</script>
+<script src="http://gloria.bk-ninja.com/wp-content/themes/gloria/js/module-load-post.js,qver==4.5.4+menu.js,qver==4.5.4.pagespeed.jc.YJX_8rmOGN.js"></script><script>eval(mod_pagespeed_KhPi01By5Q);</script>
+<script>eval(mod_pagespeed_htrC4M3mt_);</script>
+<script type='text/javascript'>var megamenu_carousel_el={"bk-carousel-620":"3"};var megamenu_carousel_el={"bk-carousel-620":"3","bk-carousel-613":"3"};var megamenu_carousel_el={"bk-carousel-620":"3","bk-carousel-613":"3","bk-carousel-657":"4"};var justified_ids=[];var ajax_c={"tickerid":"ticker-57fc8124cfcc0","tickertitle":"Latest News"};var fixed_nav="1";var customconfig=null;</script>
+<script type='text/javascript' src='http://gloria.bk-ninja.com/wp-content/themes/gloria/js/customjs.js?ver=4.5.4'></script>
+<script src="http://gloria.bk-ninja.com/wp-content,_themes,_gloria,_js,_retina.min.js,qver==4.5.4+wp-includes,_js,_wp-embed.min.js,qver==4.5.4.pagespeed.jc.7cnUPYfJNh.js"></script>
+
+</body>
+</html>

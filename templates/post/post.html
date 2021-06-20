@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{article.title}}{% endblock %}
+{% block metas %}
+<meta name="description" content="{{article.excerpt|safe}}">
+<meta property="og:title" content="{{article.title}}" />
+<meta property="og:url" content="http://www.goalkick84.com{% url 'post:article_detail' article.slug %}" />
+<meta property="og:description" content="{{article.excerpt|safe}}" />
+<meta property="og:image" content="http://www.goalkick84.com/media/{{article.image}}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="single-page sidebar-right">
+    <div class="article-wrap bkwrapper container" itemscope itemtype="http://schema.org/Article">
+       <div class="article-content-wrap">
+            <div class="row bksection bk-in-single-page clearfix">
+                <div class="main col-md-8">
+					<div class="singletop">
+	                    {% if article.category %}<div class="post-category"><a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></div>{% endif %}
+	                    <div class="bk-breadcrumbs-wrap">
+	                    	<div class="breadcrumbs">
+	                    		<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	                    			<a itemprop="url" href="{% url 'post:home' %}"><span itemprop="title">Home</span></a>
+	                    		</span>
+	                    		<span class="delim">&rsaquo;</span>
+	                    		{% if article.category %}<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	                    			{% if article.category %}<a href="{{ article.category.get_absolute_url }}"><span>{{ article.category }}</span></a>{% endif %}
+	                    		</span>
+	                    		<span class="delim">&rsaquo;</span>{% endif %}
+	                    		<span class="current">{{ article.title }}</span>
+	                    	</div>
+	                    </div>
+	        		</div> <!-- end singletop -->
+
+	        		<div class="s_header_wraper">
+                        <div class="s-post-header">
+                        	<h1 itemprop="headline">{{ article.title }}</h1>
+                            <div class="meta">
+                            	<div class="post-author">By Adeleye Gbenga</div>
+                            	<div class="post-date"><i class="fa fa-clock-o"></i>{{article.publish|date:"F j, Y"}}</div>
+                            	{% if request.user.is_staff or request.user.is_superuser %}<div class="post-author"><i class="fa fa-eye"></i> {{ article.views }} views</div>{% endif %}
+                                {% if request.user.is_staff or request.user.is_superuser %}<div class="post-author"><i class="fa fa-pencil"></i> <a href="{{ article.get_edit_url }}">Edit Post</a></div>{% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/><!-- end single header -->
+
+                    <div class="bk-share-box-top">
+                        <span>Share:</span>
+                        <div class="share-box-wrap">
+			                <div class="share-box">
+			                    <ul class="social-share">
+			                        <li class="bk_facebook_share">
+			                        	<a onClick="window.open('http://www.facebook.com/sharer.php?u=http://www.goalkick84.com{{ article.get_absolute_url }}','Facebook','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=http://www.goalkick84.com{{ article.get_absolute_url }}">
+			                        		<div class="share-item__icon"><i class="fa fa-facebook" title="Facebook"></i></div>
+			                        	</a>
+			                        </li>
+			                        <li class="bk_twitter_share">
+			                        	<a onClick="window.open('http://twitter.com/share?url=http://www.goalkick84.com{{ article.get_absolute_url }}&amp;text={{ article.title }}','Twitter share','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" href="http://twitter.com/share?url=http://www.goalkick84.com{{ article.get_absolute_url }}&amp;text={{ article.title }}"><div class="share-item__icon"><i class="fa fa-twitter " title="Twitter"></i></div></a>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			        </div>
+
+			        <header id="bk-normal-feat" class="clearfix">
+			        	<div class="s-feat-img">
+			        		<img width="750" height="400" src="{{ article.image.url }}" alt="{{ article.title }}"/>
+			        	</div>
+			        </header>
+
+			        <div class="article-content  clearfix" itemprop="articleBody">
+                        <p>{{ article.body|safe|linebreaks }}</p>
+					</div><!-- end article content -->
+
+					{% if article.get_previous_by_publish or article.get_next_by_publish %}
+					<div class="s-post-nav clearfix">
+						{% if article.get_previous_by_publish %}
+						<div class="nav-btn nav-prev">
+							<div class="nav-title clearfix">
+								<span class="icon"><i class="fa fa-long-arrow-left"></i></span>
+								<span>Previous Article</span>
+								<h3><a href="{{ article.get_previous_post.get_absolute_url }}">{{ article.get_previous_post }}</a></h3>
+							</div>
+						</div>
+						{% endif %}
+						{% if article.get_next_by_publish %}
+						<div class="nav-btn nav-next">
+							<div class="nav-title clearfix">
+								<span class="icon"><i class="fa fa-long-arrow-right"></i></span>
+								<span>Next Article</span>
+								<h3><a href="{{ article.get_next_post.get_absolute_url }}">{{ article.get_next_post }}</a></h3>
+							</div>
+						</div>
+						{% endif %}
+					</div>
+					{% endif %}
+
+					 <div class="related-box">
+                        <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//goalkick84.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                    </div>
+
+                    {% if similar_posts %}
+                    <div class="widget recommend-box">
+                    	<a class="close" href="javascript:void(0)" title="Close"><i class="fa fa-times"></i></a>
+                    	<h3>You might be interested</h3>
+                    	<div class="entries">
+                    		<ul class="list-small-post">
+                    		{% for article in similar_posts %}
+                    			<li class="small-post content_out clearfix">
+                    				<div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
+            							<div class="thumb hide-thumb">
+            								<a href=""><img width="130" height="130" src="{{ article.image.url }}" class="attachment-bk130_130 size-bk130_130 wp-post-image" alt="{{ article.title }}"/></a>
+            							</div>
+            							{% if article.category %}<div class="post-category"><a href="{{ article.caategory.get_absolute_url }}">{{ article.category }}</a></div>{% endif %}
+							            <div class="post-c-wrap">
+							                <h4 itemprop="name" class="title"><a itemprop="url" href="">{{ article.title }}</a></h4>
+							            </div>
+							        </div>
+						        </li>
+						    {% endfor %}
+						    </ul>
+						</div>
+					</div><!--recommend-box -->
+					{% endif %}
+
+				</div> <!-- end #bk-content -->
+
+				{% include 'post/sidebar.html' %}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

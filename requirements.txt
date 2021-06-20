@@ -1,0 +1,4 @@
+django==1.10.3
+Pillow
+django-ckeditor
+django-crispy-forms

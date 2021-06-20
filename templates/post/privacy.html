@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load post_tags %}
+{% block title %}Privacy Policy{% endblock %}
+{% block metas %}
+<meta property="og:title" content="Privacy Policy" />
+<meta property="og:url" content="http://www.goalkick84.com/privacy/" />
+{% endblock %}
+
+{% block content %}
+
+<div class="single-page sidebar-right">
+    <div class="article-wrap bkwrapper container" itemscope itemtype="http://schema.org/Article">
+       <div class="article-content-wrap">
+            <div class="row bksection bk-in-single-page clearfix">
+                <div class="main col-md-8">
+					<div class="singletop">
+	                    <div class="bk-breadcrumbs-wrap">
+	                    	<div class="breadcrumbs">
+	                    		<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	                    			<a itemprop="url" href="{% url 'post:home' %}"><span itemprop="title">Home</span></a>
+	                    		</span>
+	                    		<span class="delim">&rsaquo;</span>
+	                    		<span class="current">Privacy Policy</span>
+	                    	</div>
+	                    </div>
+	        		</div> <!-- end singletop --><br/>
+
+			        <div class="article-content  clearfix" itemprop="articleBody">
+                     	<p>At <a href="http://www.goalkick84.com">Goalkick84</a>, the privacy of our visitors is of extreme importance to us. This privacy policy document outlines the types of personal information that is received and collected by <a href="http://www.goalkick84.com">Goalkick84</a> and how it is used.<p>
+
+<b>Log Files</b>
+<p>Like many other Web sites, we make use of log files. The information inside the log files includes internet protocol (IP) addresses, type of browser, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and number of clicks to analyze trends, administer the site, track user's movement around the site, and gather demographic information. IP addresses, and other such information are not linked to any information that is personally identifiable.</p>
+
+<b>Cookies</b>
+<p><a href="http://www.goalkick84.com">Goalkick84</a> does not use cookies to store information about visitors preferences or record user-specific information on which pages the user access or
+visits</p>
+
+<p><b>Google Adsense:</b>
+
+Google, as a third party vendor, uses cookies to serve ads on <a href="http://www.goalkick84.com">Goalkick84</a>. Google's use of cookies enables it to serve ads to users based on their visit to <a href="http://www.goalkick84.com">Goalkick84</a> and other sites on the Internet. They automatically receive your IP address when this occurs.</p>
+
+<p>Other technologies (such as cookies, JavaScript, or Web Beacons) may also be used by the third-party ad networks to measure the effectiveness of their advertisements and / or to personalize the advertising content that you see. <a href="http://www.goalkick84.com">Goalkick84</a> has no access to or control over these cookies that
+are used by third-party advertisers.</p>
+
+<p>You should consult the respective privacy policies of these third-party ad servers for more detailed information on their practices as well as for instructions about how to opt-out of certain practices.</p>
+
+<p><a href="http://www.goalkick84.com">Goalkick84</a>'s privacy policy does not apply to, and we cannot control the activities of such other advertisers or web sites.</p>
+
+<p>If you wish to disable cookies, you may do so through your individual browser options. More detailed information about cookie management with specific web browsers can be found at the browsers' respective websites.</p>
+					</div><!-- end article content -->
+
+
+                    <div class="widget recommend-box">
+                    	<a class="close" href="javascript:void(0)" title="Close"><i class="fa fa-times"></i></a>
+                    	<h3>You might be interested</h3>
+                    	<div class="entries">
+                    		<ul class="list-small-post">
+                    		{% get_latest_articles as articles %}
+							{% for article in articles %}
+                    			<li class="small-post content_out clearfix">
+                    				<div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
+            							<div class="thumb hide-thumb">
+            								<a href=""><img width="130" height="130" src="{{ article.image.url }}" class="attachment-bk130_130 size-bk130_130 wp-post-image" alt="{{ article.title }}"/></a>
+            							</div>
+            							{% if article.category %}<div class="post-category"><a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></div>{% endif %}
+							            <div class="post-c-wrap">
+							                <h4 itemprop="name" class="title"><a itemprop="url" href="">{{ article.title }}</a></h4>
+							            </div>
+							        </div>
+						        </li>
+						    {% endfor %}
+						    </ul>
+						</div>
+					</div><!--recommend-box -->
+
+				</div> <!-- end #bk-content -->
+
+				{% include 'post/sidebar.html' %}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

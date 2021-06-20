@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load post_tags %}
+{% load crispy_forms_tags %}
+{% block title %}Create New Post{% endblock %}
+{% block metas %}
+<meta property="og:url" content="http://www.goalkick84.com/new-post/" />
+{% endblock %}
+
+{% block content %}
+
+<div class="single-page sidebar-right">
+    <div class="article-wrap bkwrapper container" itemscope itemtype="http://schema.org/Article">
+       <div class="article-content-wrap">
+            <div class="row bksection bk-in-single-page clearfix">
+                <div class="main col-md-8">
+					<div class="singletop">
+	                    <div class="bk-breadcrumbs-wrap">
+	                    	<div class="breadcrumbs">
+	                    		<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	                    			<a itemprop="url" href="{% url 'post:home' %}"><span itemprop="title">Home</span></a>
+	                    		</span>
+	                    		<span class="delim">&rsaquo;</span>
+	                    		<span class="current">Create New Post</span>
+	                    	</div>
+	                    </div>
+	        		</div> <!-- end singletop --><br/>
+
+			        <article class="clearfix page">
+                		<div class="post-content">
+                			<div class="screen-reader-response"></div>
+								<form action="." method="post"  enctype="multipart/form-data">{% csrf_token %}
+								{{ form|crispy }}
+									<input type="submit" class="btn btn-default" value="Create Post">
+								</form>
+						</div>
+                	</article>
+
+
+				</div> <!-- end #bk-content -->
+
+				<!-- sidebar -->
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
