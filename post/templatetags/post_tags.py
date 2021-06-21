@@ -6,9 +6,5 @@ register = template.Library()
 
 
 @register.inclusion_tag('post/latest_posts.html')
-def get_latest_articles():
-    return {'latest_articles': Article.objects.all()[:3]}
-
-
-def latest_articles():
-    return {'latest_articles': Article.objects.all()[:3]}
+def get_latest_articles(count=4):
+    return {'latest_articles': Article.objects.all()[:count]}

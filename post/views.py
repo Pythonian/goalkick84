@@ -9,13 +9,15 @@ from django.utils.text import slugify
 from django.db import models
 
 
-
 def mk_paginator(request, items, num_items):
     '''Create and return a paginator.'''
     paginator = Paginator(items, num_items)
-    try: page = int(request.GET.get('page', '1'))
-    except ValueError: page = 1
-    try: items = paginator.page(page)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    try:
+        items = paginator.page(page)
     except (InvalidPage, EmptyPage):
         items = paginator.page(paginator.num_pages)
     return items
@@ -24,7 +26,7 @@ def mk_paginator(request, items, num_items):
 def home(request):
     section = "home"
     article_list = Article.objects.all()
-    article_list = mk_paginator(request, article_list, 20)
+    article_list = mk_paginator(request, article_list, 15)
     return render(
         request,
         'post/home.html',
@@ -36,13 +38,13 @@ def articles(request):
     articles = mk_paginator(request, articles, 8)
     return render(
         request,
-        'post/articles.html',
+        'post/articles.html',  # this template doesn't exist
         locals())
 
 
 def article_detail(request, article_slug):
-#    article = get_object_or_404(
-#        Article, slug__iexact=article_slug)
+    #    article = get_object_or_404(
+    #        Article, slug__iexact=article_slug)
     queryset = Article.objects.filter(
         slug__iexact=article_slug)
     if request:
@@ -71,7 +73,6 @@ def category(request, category_slug):
         request,
         'post/category.html',
         locals())
-
 
 
 def tag_detail(request, tag_slug):
@@ -136,13 +137,15 @@ def new(request):
         'post/new.html',
         locals())
 
+
 def edit(request, article_slug):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
     post = get_object_or_404(
         Article,
         slug__iexact=article_slug)
-    form = ArticleForm(request.POST or None, request.FILES or None, instance=post)
+    form = ArticleForm(request.POST or None,
+                       request.FILES or None, instance=post)
     if form.is_valid():
         post = form.save(commit=False)
         post.save()

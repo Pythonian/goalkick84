@@ -23,17 +23,14 @@
                                         <div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
                                             <div class="row-type-inner">
                                                 <div class="bk-mask">
-                                                    <div class="thumb hide-thumb">
-                                                        <a href="{{ article.get_absolute_url }}"><img width="400"
-                                                                height="267" src="{{ article.image.url }}"
-                                                                class="attachment-bk-auto-size size-bk-auto-size wp-post-image"
-                                                                alt="" /></a>
+                                                    <div class="thumb">
+                                                        <a href="{{ article.get_absolute_url }}"><img width="400" height="267" src="{{ article.image.url }}" class="attachment-bk-auto-size size-bk-auto-size wp-post-image" alt="" /></a>
                                                     </div> <!-- close thumb -->
                                                 </div>
                                                 {% if article.category %}<div class="post-category"><a
                                                         href="{{ article.category.get_absolute_url }}">{{ article.category }}</a>
                                                 </div>{% endif %}
-                                                <div class="post-c-wrap sink">
+                                                <div class="post-c-wrap">
                                                     <h4 itemprop="name" class="title">
                                                         <a itemprop="url"
                                                             href="{{ article.get_absolute_url }}">{{article.title}}</a>

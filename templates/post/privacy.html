@@ -55,7 +55,7 @@ are used by third-party advertisers.</p>
                     	<h3>You might be interested</h3>
                     	<div class="entries">
                     		<ul class="list-small-post">
-                    		{% get_latest_articles as articles %}
+                    		{% get_latest_articles 4 %}
 							{% for article in articles %}
                     			<li class="small-post content_out clearfix">
                     				<div class="bk-article-wrapper" itemscope itemtype="http://schema.org/Article">
